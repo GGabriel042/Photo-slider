@@ -1,0 +1,147 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0 35px;
+  background: linear-gradient(to left top, #4E0000 ,#9E0000);
+}
+
+.wrapper {
+  position: relative;
+  bottom: 50px;
+  max-width: 1300px;
+  width: 100%;
+}
+
+.wrapper i {
+  height: 50px;
+  width: 50px;
+  background-color: #E5E4E2;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  font-size: 1.25rem;
+  transform: translateY(-50%);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.wrapper i:first-child {
+  left: -22px;
+}
+
+.wrapper i:last-child {
+  right: -22px;
+}
+
+.wrapper .carousel{
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% / 4));
+  gap: 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: 0;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel :where(.card, .img) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.carousel.no-transition {
+  scroll-behavior: auto;
+}
+
+.carousel.dragging {
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+}
+
+.carousel.dragging .card{
+  cursor: grab;
+  user-select: none;
+}
+
+.carousel .card {
+  scroll-snap-align: start;
+  height: 420px;
+  list-style: none;
+  background-color: #E5E4E2;
+  border-radius: 0% 15% 0% 15% / 0% 15% 0% 15% ;
+  display: flex;
+  width: 280px;
+  padding-bottom: 80px;
+  padding-top: 80px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 5px 3px 5px rgba(0, 0, 0, 0.8);
+  
+}
+
+.card .img {
+  width: 270px;
+  height: 3600px;
+  border-radius: 0% 15% 0% 15% / 0% 15% 0% 15% ;
+}
+
+.card .img img {
+  width: 270px;
+  height: 360px;
+  object-fit: cover;
+  border: none;
+  border-radius: 0% 15% 0% 15% / 0% 15% 0% 15% ;
+}
+
+.card h2 {
+  
+  font-weight: normal;
+  font-size: 1.2rem;
+  margin: 10px 0 5px;
+}
+
+.card span {
+  font-weight: bold;
+  color: #020004;
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 1200px) {
+  .wrapper .carousel {
+    grid-auto-columns: calc((100% / 3) - 10px);
+    margin-left: 50px;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .wrapper .carousel {
+    grid-auto-columns: calc((100% / 2) - 10px);
+  }
+}
+
+@media screen and (max-width: 690px) {
+  .wrapper .carousel {
+    grid-auto-columns: calc(100%);
+    margin-left: 75px;
+  }
+}
